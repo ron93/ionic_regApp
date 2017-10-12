@@ -9,7 +9,41 @@ from kivy.properties import NumericProperty, ReferenceListProperty,ObjectPropert
 from kivy.vector import Vector
 # clock
 from kivy.clock import Clock
+# ranomizer
+
 from random import randint
+
+
+# pongpuddle
+class PongPaddle(Widget):
+	score = NumericProperty(0)
+
+	def bounce_ball(self, ball):
+		if self.collide_widget(ball):
+			vx, vy = ball.velocity
+			# unit to speed of ball on collide with puddle
+			speedup = 1.1
+			# position offset of ball(offset from original pos on x and y axis)
+			offset = (ball.center_y - self.center_y)/ (self.height/2)
+			bounced = Vector(-1*vx, vy)
+			vel = bounced * 1.1
+			ball.velocity = vel.x , vel.y + offset
+
+#PongBall class
+class PongBall(Widget):
+	#ball's velocity on the x and y axis
+	velocity_x = NumericProperty(0)
+	velocity_y = NumericProperty(0)
+
+	#referencelist property so as to use ball.velocity as a shorthand, like :- pos for w.x and w.y
+	velocity = ReferenceListProperty(velocity_x, velocity_y)
+	#`move` function to move ball one step.
+	#function will be called at equal intevals to animate ball
+	def move(self):
+		self.pos =Vector(*self.velocity) + self.pos
+
+
+
 class PongGame(Widget):
 	#hooking PongBall child widget(in pong.kv file) to PongGame class.
 	ball = ObjectProperty(None)
@@ -31,19 +65,6 @@ class PongGame(Widget):
    		# bounce off left and righ side
    		if (self.ball.x < 0 )  or (self.ball.right > self.width):
    			self.ball.velocity_x *= -1 
-
-#PongBall class
-class PongBall(Widget):
-	#ball's velocity on the x and y axis
-	velocity_x = NumericProperty(0)
-	velocity_y = NumericProperty(0)
-
-	#referencelist property so as to use ball.velocity as a shorthand, like :- pos for w.x and w.y
-	velocity = ReferenceListProperty(velocity_x, velocity_y)
-	#`move` function to move ball one step.
-	#function will be called at equal intevals to animate ball
-	def move(self):
-		self.pos =Vector(*self.velocity) + self.pos
 
 
 
