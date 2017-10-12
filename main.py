@@ -6,7 +6,7 @@ from kivy.uix.widget import Widget
 # properties
 from kivy.properties import NumericProperty, ReferenceListProperty
 # vector
-from kivy.vector
+from kivy.vector import Vector
 
 class PongGame(Widget):
    pass

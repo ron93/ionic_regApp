@@ -1,4 +1,11 @@
 #: kivy 1.10.0
+
+<PongBall>
+	size: 50, 50
+	canvas:
+		Ellipse:
+			pos: self.pos
+			size: self.size
 <PongGame>
 	canvas:
 		Rectangle: 
@@ -17,12 +24,10 @@
 		top: root.top-50
 		text:"0"
 
+	#PongBall child widget
+	PongBall:
+		center: self.parent.center
 
-<PongBall>
-	size: 50, 50
-	canvas:
-		Ellipse:
-			pos: self.pos
-			size: self.size
 
-			
+
+	
