@@ -9,8 +9,10 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.vector import Vector
 
 class PongGame(Widget):
+	#hooking PongBall child widget(in pong.kv file) to PongGame class.
+	ball = ObjectProperty(None)
    
-   def update(self, dt):
+	def update(self, dt):
    		#call ball.move and any other method
    		pass
 
