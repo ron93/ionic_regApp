@@ -45,7 +45,16 @@
 		#id to hool to PongGame object property
 		id: pong_ball
 		center: self.parent.center
+	
+	PongPaddle: 
+		id: player_left
+		x:root.x
+		center_y: root.center_y
 
+	PongPaddle:
+		id: player_right
+		x: root.width-self.width
+		center_y: root.center_y
 
 
 
