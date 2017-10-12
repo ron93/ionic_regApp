@@ -1,14 +1,26 @@
 #: kivy 1.10.0
 
+
+<PongPaddle>
+	size: 50, 50
+	canvas:
+		Ellipse:
+			pos:self.pos
+			size: self.size
+
 <PongBall>
 	size: 50, 50
 	canvas:
 		Ellipse:
 			pos: self.pos
+	
 			size: self.size
+
 <PongGame>
 	
 	ball: pong_ball
+	player1: player_left
+	player2: player_right
 
 	canvas:
 		Rectangle: 
@@ -33,6 +45,7 @@
 		#id to hool to PongGame object property
 		id: pong_ball
 		center: self.parent.center
+
 
 
 
