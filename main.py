@@ -50,7 +50,7 @@ class PongGame(Widget):
 	player1 = ObjectProperty(None)
 	player2 = ObjectProperty(None)
 
-	def serve_ball(self, vel(4,0)):
+	def serve_ball(self, vel=(4,0)):
 		# ball position
 		self.ball.center= self.center
 		# ball velocity
@@ -71,6 +71,15 @@ class PongGame(Widget):
    		# bounce off left and righ side
    		if (self.ball.x < 0 )  or (self.ball.right > self.width):
    			self.ball.velocity_x *= -1 
+
+   		# ball scored point(PAssed player paddle to side of the wall)
+   		if self.ball.x < self.x:
+   			self.player2.score +=1
+   			self.serve_ball(vel=(4,0))
+   		if self.ball.x > self.width:
+   			self.player1.score +=1
+   			self.serve_ball(vel=(-4,0))
+
 
 
 
