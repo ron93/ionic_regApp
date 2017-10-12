@@ -7,10 +7,14 @@
 			pos: self.pos
 			size: self.size
 <PongGame>
+	
+	ball: pong_ball
+
 	canvas:
 		Rectangle: 
 			pos: self.center_x -5, 0 
 			size:10, self.height
+
 
 	Label:
 		font_size:70
@@ -26,6 +30,8 @@
 
 	#PongBall child widget
 	PongBall:
+		#id to hool to PongGame object property
+		id: pong_ball
 		center: self.parent.center
 
 
