@@ -30,7 +30,7 @@ class PongGame(Widget):
 
    		# bounce off left and righ side
    		if (self.ball.x < 0 )  or (self.ball.right > self.width):
-   		self.ball.velocity_x *=-1 
+   			self.ball.velocity_x *= -1 
 
 #PongBall class
 class PongBall(Widget):
@@ -50,6 +50,7 @@ class PongBall(Widget):
 class PongApp(App):
     def build(Self):
     	game =PongGame()
+    	game.serve_ball()
     	Clock.schedule_interval(game.update, 1.0/60.0)
 	return game
 
