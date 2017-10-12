@@ -14,7 +14,7 @@ from kivy.clock import Clock
 from random import randint
 
 
-# pongpuddle
+# pongpaddle
 class PongPaddle(Widget):
 	score = NumericProperty(0)
 
@@ -47,16 +47,22 @@ class PongBall(Widget):
 class PongGame(Widget):
 	#hooking PongBall child widget(in pong.kv file) to PongGame class.
 	ball = ObjectProperty(None)
+	player1 = ObjectProperty(None)
+	player2 = ObjectProperty(None)
 
-	def serve_ball(self):
+	def serve_ball(self, vel(4,0)):
 		# ball position
 		self.ball.center= self.center
 		# ball velocity
-		self.ball.velocity = Vector(4, 0).rotate(randint(0,360))
+		self.ball.velocity = vel
 
 
 	def update(self, dt):
    		self.ball.move()
+
+   		# bounce off paddle
+   		self.player1.bounce_ball(self.ball)
+   		self.player2.bounce_ball(self.ball)
 
    		#bounce off top and bottom side of 'wall'
    		if (self.ball.y < 0) or(self.ball.top > self.height):
