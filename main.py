@@ -1,7 +1,12 @@
 import kivy
 kivy.require('1.10.0')
 from kivy.app import App
+# widget
 from kivy.uix.widget import Widget
+# properties
+from kivy.properties import NumericProperty, ReferenceListProperty
+# vector
+from kivy.vector
 
 class PongGame(Widget):
    pass
@@ -17,7 +22,8 @@ class PongBall(Widget):
 	#`move` function to move ball one step.
 	#function will be called at equal intevals to animate ball
 	def move(self):
-		self.pos =vector(*Self.velocity) + self.pos 
+		self.pos =vector(*Self.velocity) + self.pos
+
 
 
 class PongApp(App):
