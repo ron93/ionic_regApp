@@ -9,7 +9,10 @@ from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.vector import Vector
 
 class PongGame(Widget):
-   pass
+   
+   def update(self, dt):
+   		#call ball.move and any other method
+   		pass
 
 #Ball
 class PongBall(Widget):
@@ -28,7 +31,9 @@ class PongBall(Widget):
 
 class PongApp(App):
     def build(Self):
-        return PongGame()
+    	game =PongGame()
+    	clock.schedule_interval(game.update, 1.0/60.0)
+		return game
 
 if __name__ == '__main__':
 	PongApp().run()
